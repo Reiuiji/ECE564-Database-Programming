@@ -1,8 +1,6 @@
 --Exam run sql script
 PROMPT ==========================================
 PROMPT |              Running Exam              |
-PROMPT |              Daniel Noyes              |
-PROMPT |                                        |
 PROMPT ==========================================
 
 --Generate tables
