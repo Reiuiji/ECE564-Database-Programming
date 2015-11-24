@@ -1,0 +1,28 @@
+1 [X] 10
+2 [P] 10
+3 [X] 10
+4 [X] 10
+5 [X] 30
+6 [X] 30
+E [X] 10
+
+
+1) Write an SQL statement which returns the fish scientific name, the average number in stock and the average stock value (number in stock * price) for the fish species (e.g. Chaetodon “butterfly fish” or Scaridae “parrot fish”) for all the marine fish we have in stock. (10 pts)
+
+
+2) Write an SQL statement to add an existential constraint to make sure that a marine invertibrate found in the aquatic_organism_stock table also exists in the marine_invertibrates table. (10 pts)
+
+
+3) Write an SQL statement to create a view which finds all the scientific names, common names and the price for marine fish and marine invertebrates we have in stock in quantities greater than 5 and sort the result by scientific name. (10 pts)
+
+
+4) Create an Object_type called marine_animal_ty that has attributes, scientific_name, common_name, max_size, food_preference and geographic_range. Then use this type to re-create both marine_fish and marine_invertibrates tables as in the exam specification (page 1). (10 pts)
+
+
+5) Write a simple SQL procedure which returns a marine fish record (a tuple (row)) along with a flag (0 if no record is found, 1 if a valid record returned) if a given fish exists in our aquatic_organism_stock table, using an inputted common name. (30 points)
+
+
+6) Write an SQL trigger, on the marine_fish table, which fires after a new fish is added to the marine_fish table, causing the insertion of new organisms by inserting a new tuple in the add_fish table (with data derived from the existing table and the date as todays). (30 points)
+
+
+Extra Credit: Define a cursor which can be used to examine the marine invertibrates stored in our aquatic_organism_stock table and possible others. The cursor should allow us to see an invertibrates’s common_name, stock_id and number_in_stock. (+10 points)
