@@ -24,13 +24,15 @@ AS OBJECT ( scientific_name  VARCHAR(30),
 CREATE TABLE marine_fish_tb
     (
       animal_ty marine_animal_ty,
-      fish_species VARCHAR(20)
+      fish_species VARCHAR(20),
+      CONSTRAINT marine_fish_pk PRIMARY KEY (animal_ty.scientific_name)
     );
 
   CREATE TABLE marine_invertebrates_tb
     (
       animal_ty marine_animal_ty,
-      invertebrate_group VARCHAR(30)
+      invertebrate_group VARCHAR(30),
+      CONSTRAINT marine_invertebrates_pk PRIMARY KEY (animal_ty.scientific_name)
     );
 
   PROMPT #Testing each table with objects
