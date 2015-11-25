@@ -9,7 +9,7 @@ INFO
 Each Part of the exam is sectioned off into various .sql files
 
 |Files                      | Description                                       |
-|---------------------------|---------------------------------------------------|
+|:-------------------------:|:--------------------------------------------------|
 |[exam.sql](exam.sql)       | Script to run each sql file in order for the exam |
 |[table.sql](table.sql)     | Generate the Tables required for the exam         |
 |[values.sql](values.sql)   | Populate the tables with arbitrary values         |
