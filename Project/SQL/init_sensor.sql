@@ -45,10 +45,10 @@ CREATE OR REPLACE PROCEDURE Insert_Data
   , Val       IN Sensor_Data.Val%TYPE
   )
   AS
-  time TIMESTAMP := SYSTIMESTAMP;
+  Time TIMESTAMP := SYSTIMESTAMP;
 BEGIN
   --DBMS_OUTPUT.PUT_LINE('Data Added: SID-' || Sensor_ID || ':' || Val || ' (' || time || ')');
-  INSERT INTO Sensor_Data VALUES (Sensor_ID, time, Val);
+  INSERT INTO Sensor_Data VALUES (Sensor_ID, Time, Val);
 END Insert_Data;
 /
 
@@ -81,8 +81,8 @@ BEGIN
       -- Grab the Current NumEntry
       SELECT NumEntry
         INTO NumInc
-        FROM DATA_UPDATE
-        WHERE SENSOR_ID = 0;
+        FROM Data_Update
+        WHERE Sensor_ID = 0;
       -- Update the number entry and post date entry
       UPDATE Data_Update
       SET    DataEntry = P_DateEnrty,

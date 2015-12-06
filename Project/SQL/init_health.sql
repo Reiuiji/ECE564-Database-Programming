@@ -36,8 +36,8 @@ BEGIN
   -- Finds the Bridge and Ted ID from Sensor ID
   SELECT Bridge_ID, Teds_ID
     INTO P_Bridge_ID, P_Teds_ID
-    FROM SENSOR_TBL
-    WHERE SENSOR_ID = P_Sensor_ID;
+    FROM Sensor_Tbl
+    WHERE Sensor_ID = P_Sensor_ID;
 END Sensor_Grab;
 /
 
@@ -50,45 +50,45 @@ CREATE OR REPLACE PROCEDURE Health_Check
   )
   AS
   -- Cursor which has a view into the necessary data from the TEDS ID
-  CURSOR THRESHOLD_T IS
+  CURSOR Threshold_T IS
     SELECT Teds_ID, CheckCode, Threshold_Value, Report_Code, Report_Results
-    FROM SENSOR_THRESHOLDS
+    FROM Sensor_Thresholds
     WHERE TEDS_ID = P_Teds_ID;
   -- Data holder for the threshold
-  THRES THRESHOLD_T%ROWTYPE;
+  Thres Threshold_T%ROWTYPE;
 BEGIN
   --DBMS_OUTPUT.PUT_LINE('Health Check:' || P_Sensor_ID || ',' || P_Bridge_ID  || ',' || P_TEDS_ID || ',' || P_Val);
   -- Open the threshold cursor
-  OPEN THRESHOLD_T;
+  OPEN Threshold_T;
   LOOP
-    FETCH THRESHOLD_T INTO THRES;
-    EXIT WHEN THRESHOLD_T%NOTFOUND;
+    FETCH Threshold_T INTO Thres;
+    EXIT WHEN Threshold_T%NOTFOUND;
     --DBMS_OUTPUT.PUT_LINE(THRES.Teds_ID || ',' || THRES.CheckCode || ',' || THRES.Threshold_Value || ',' || THRES.Report_Code || ',' || THRES.Report_Results);
 
     -- Go Though the check routines
     -- Equal Threshold
-    IF THRES.CheckCode = 0 THEN
-      IF P_Val = THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+    IF Thres.CheckCode = 0 THEN
+      IF P_Val = Thres.Threshold_Value THEN
+        INSERT INTO Health_Report VALUES (P_Bridge_ID, SYSDATE, Thres.Report_Code, Thres.Report_Results);
       END IF;
     
     -- High Threshold
-    ELSIF THRES.CheckCode = 1 THEN
-      IF P_Val > THRES.Threshold_Value  THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+    ELSIF Thres.CheckCode = 1 THEN
+      IF P_Val > Thres.Threshold_Value  THEN
+        INSERT INTO Health_Report VALUES (P_Bridge_ID, SYSDATE, Thres.Report_Code, Thres.Report_Results);
       END IF;
     
     -- Low Threshold
-    ELSIF THRES.CheckCode = 1 THEN
-      IF P_Val < THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+    ELSIF Thres.CheckCode = 1 THEN
+      IF P_Val < Thres.Threshold_Value THEN
+        INSERT INTO Health_Report VALUES (P_Bridge_ID, SYSDATE, Thres.Report_Code, THRES.Report_Results);
       END IF;
     
     -- No Check
     --ELSE
     END IF;
   END LOOP;
-  CLOSE THRESHOLD_T;
+  CLOSE Threshold_T;
 END;
 /
 
@@ -102,7 +102,7 @@ BEGIN
     P_BRIDGE_ID NUMBER(5);
     P_TEDS_ID   NUMBER(10);
   BEGIN
-    UPDATE_DATA(:new.Sensor_ID,:new.DataEntry,:new.Val);
+    Update_Data(:new.Sensor_ID,:new.DataEntry,:new.Val);
     Sensor_Grab(:new.Sensor_ID,P_Bridge_ID,P_Teds_ID);
     Health_Check(:new.Sensor_ID,:new.Val,P_Bridge_ID,P_Teds_ID);
   END;

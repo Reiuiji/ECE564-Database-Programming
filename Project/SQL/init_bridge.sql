@@ -55,7 +55,7 @@ CREATE OR REPLACE TYPE BODY Date_Info AS
 CREATE TABLE Bridge_Tbl
   ( Bridge_ID       NUMBER(8) NOT NULL
   , Name            VARCHAR(60)
-  , Year_Built      DATE_INFO
+  , Year_Built      Date_Info
   , Bridge_Location Location_Typ
   , PRIMARY KEY(Bridge_ID)
   );
