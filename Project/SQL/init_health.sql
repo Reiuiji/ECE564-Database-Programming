@@ -27,9 +27,9 @@ CREATE TABLE Sensor_Thresholds
 -- Routine which will find the Bridge ID as well as the TEDS ID
 --  for a specific sensor id
 CREATE OR REPLACE PROCEDURE Sensor_Grab
-  ( P_SENSOR_ID IN  Sensor_Data.Sensor_ID%Type
+  ( P_Sensor_DI IN  Sensor_Data.Sensor_ID%Type
   , P_Bridge_ID OUT Bridge_Tbl.Bridge_ID%TYPE
-  , P_TEDS_ID   OUT Teds_Tbl.Teds_ID%TYPE
+  , P_Teds_ID   OUT Teds_Tbl.Teds_ID%TYPE
   )
   IS
 BEGIN
@@ -57,13 +57,13 @@ CREATE OR REPLACE PROCEDURE Health_Check
   -- Data holder for the threshold
   Thres Threshold_T%ROWTYPE;
 BEGIN
-  --DBMS_OUTPUT.PUT_LINE('Health Check:' || P_Sensor_ID || ',' || P_Bridge_ID  || ',' || P_TEDS_ID || ',' || P_Val);
+  --DBMS_OUTPUT.PUT_LINE('Health Check:' || P_Sensor_ID || ',' || P_Bridge_ID  || ',' || P_Teds_ID || ',' || P_Val);
   -- Open the threshold cursor
   OPEN Threshold_T;
   LOOP
     FETCH Threshold_T INTO Thres;
     EXIT WHEN Threshold_T%NOTFOUND;
-    --DBMS_OUTPUT.PUT_LINE(THRES.Teds_ID || ',' || THRES.CheckCode || ',' || THRES.Threshold_Value || ',' || THRES.Report_Code || ',' || THRES.Report_Results);
+    --DBMS_OUTPUT.PUT_LINE(Thres.Teds_ID || ',' || Thres.CheckCode || ',' || Thres.Threshold_Value || ',' || Thres.Report_Code || ',' || Thres.Report_Results);
 
     -- Go Though the check routines
     -- Equal Threshold
@@ -81,7 +81,7 @@ BEGIN
     -- Low Threshold
     ELSIF Thres.CheckCode = 1 THEN
       IF P_Val < Thres.Threshold_Value THEN
-        INSERT INTO Health_Report VALUES (P_Bridge_ID, SYSDATE, Thres.Report_Code, THRES.Report_Results);
+        INSERT INTO Health_Report VALUES (P_Bridge_ID, SYSDATE, Thres.Report_Code, Thres.Report_Results);
       END IF;
     
     -- No Check
