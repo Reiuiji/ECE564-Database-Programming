@@ -4,7 +4,6 @@
 
 -- Location Object to handle all geographical information
 CREATE OR REPLACE TYPE Location_Typ
-OID '261CED41A8480C15E055020C29956D0A' --SELECT SYS_OP_GUID() FROM DUAL; 
 AS OBJECT 
   ( Country  VARCHAR(60) -- Country ex USA
   , State    VARCHAR(2)  -- State Abriveations ex MA
