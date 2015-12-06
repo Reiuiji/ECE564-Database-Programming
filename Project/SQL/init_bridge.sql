@@ -1,6 +1,5 @@
 --
 -- Bridge Init Script
--- V 0.7
 --
 
 -- Location Object to handle all geographical information

@@ -1,5 +1,4 @@
 -- Database Drop Script
--- V 0.1
 
 PROMPT ==========================================
 PROMPT |           Dropping Database            |
@@ -7,6 +6,11 @@ PROMPT |               BridgeMon                |
 PROMPT ==========================================
 
 -- Going Through init in reverse
+
+-- Security
+DROP TABLE      ACCESS_TOKEN;
+DROP TABLE      FAILED_LOGIN;
+DROP TABLE      USER_TBL;
 
 -- Health 
 DROP TRIGGER    SensorDataTrig;

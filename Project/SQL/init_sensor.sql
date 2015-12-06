@@ -1,6 +1,5 @@
 --
 -- Teds Init Script
--- V 1.2
 --
 
 -- Sensor Table
@@ -91,3 +90,20 @@ BEGIN
       WHERE Sensor_ID = P_Sensor_ID;
 END;
 /
+
+--View of the bridge data
+CREATE OR REPLACE VIEW Sensor AS  
+SELECT ST.Sensor_ID       AS SENSOR_ID
+     , ST.Teds_ID         AS TEDS_ID
+     , ST.Location_Number AS LOCATION_NUM
+     , TT.Manufacture_ID  AS MANUFACTURE_ID
+     , TT.Model_Number    AS MODEL_NUM
+     , TT.Version_Letter  AS VERSION_LETTER
+     , TT.Version_Number  AS VERSION_NUM
+     , TT.Serial_Number   AS SERIAL_NUM
+     , TT.Template_ID     AS TEMPLATE_ID
+     , TT.User_Text       AS USER_TEXT
+     , TR.Name            AS NAME
+  FROM Sensor_Tbl ST
+  INNER JOIN Teds_Tbl TT ON ST.Teds_ID = TT.Teds_ID
+  LEFT OUTER JOIN Transducer_Type TR ON TR.Transducer_ID = TT.Template_ID;

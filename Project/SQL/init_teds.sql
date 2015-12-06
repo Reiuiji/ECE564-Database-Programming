@@ -1,6 +1,5 @@
 --
 -- Teds Init Script
--- V 0.9
 --
 
 
@@ -8,7 +7,7 @@
 CREATE TABLE Teds_Tbl
   ( Teds_ID               NUMBER(10) -- What type of Data Sheet
   -- Section 1
-  , Manufactureer_ID      NUMBER(5)  -- 17 - 16381    : 14 Bits
+  , Manufacture_ID        NUMBER(5)  -- 17 - 16381    : 14 Bits
   , Model_Number          NUMBER(5)  -- 0  - 32767    : 15 Bits
   , Version_Letter        CHAR(1)    -- A  - Z        :  5 Bits
   , Version_Number        NUMBER(2)  -- 0  - 63       :  6 Bits

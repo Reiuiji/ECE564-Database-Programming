@@ -1,5 +1,4 @@
 -- Database initalizer Script
--- V 0.1
 
 PROMPT ==========================================
 PROMPT |           Running Initalizer           |
@@ -13,6 +12,9 @@ PROMPT Building the Database
 @init_health.sql
 PROMPT Database Building Complete
 
+PROMPT Setting UP Securing Access Tbls
+@init_security.sql
+PROMPT Secure Setup Complete
 
 PROMPT Populating with Default Data
 @init_values.sql

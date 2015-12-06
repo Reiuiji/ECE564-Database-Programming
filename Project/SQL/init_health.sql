@@ -1,6 +1,5 @@
 --
 -- Health Init Script
--- V 0.5
 --
 
 -- Health Report Table
