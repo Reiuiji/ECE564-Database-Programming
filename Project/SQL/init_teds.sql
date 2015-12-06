@@ -21,7 +21,7 @@ CREATE TABLE Teds_Tbl
   , Calibration_Template  RAW(2000)  -- RAW Calibaration Data
   -- Section 4 User Data
   , User_Text             VARCHAR(32)-- Custom User Text
-  , PRIMARY KEY (Teds_ID)
+  , PRIMARY KEY (TEDS_ID)
 );
 
 -- Create a sequence to keep track of the Teds_ID values
@@ -48,8 +48,8 @@ CREATE TABLE Transducer_Type
   );
 
 -- IEEE Standard Templates - Physical Measureand
-CREATE TABLE Physical_Type
-  ( Physical_ID  NUMBER(3) NOT NULL
-  , Unit         varchar(12)
-  , PRIMARY KEY(Physical_ID)
+CREATE TABLE physical_type
+  ( physical_id  NUMBER(3) NOT NULL
+  , unit         varchar(12)
+  , PRIMARY KEY(physical_id)
   );

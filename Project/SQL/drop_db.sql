@@ -1,3 +1,6 @@
+-- Database Drop Script
+-- V 0.1
+
 PROMPT ==========================================
 PROMPT |           Dropping Database            |
 PROMPT |               BridgeMon                |

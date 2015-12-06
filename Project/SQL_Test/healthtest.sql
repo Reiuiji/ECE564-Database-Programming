@@ -83,7 +83,7 @@ BEGIN
     
     
     -- Low Threshold
-    ELSIF THRES.CheckCode = 1 THEN
+    ELSIF THRES.CheckCode = 2 THEN
     
       IF P_Val < THRES.Threshold_Value THEN
         INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
