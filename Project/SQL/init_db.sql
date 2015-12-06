@@ -15,7 +15,7 @@ PROMPT Database Building Complete
 
 
 PROMPT Populating with Default Data
-
+@init_values.sql
 PROMPT Populating Complete
 
 
