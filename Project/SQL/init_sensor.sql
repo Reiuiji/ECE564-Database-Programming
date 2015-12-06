@@ -8,7 +8,7 @@ CREATE TABLE Sensor_Tbl
   ( Sensor_ID               NUMBER(10) NOT NULL
   , Bridge_ID               NUMBER(8)  -- Which bridge sensor resides
   , Teds_ID                 NUMBER(10) -- Sensor TEDS 
-  , Bridge_Location         NUMBER(4)  -- Location number based on bridge schematic (1,000 sensors)
+  , Location_Number         NUMBER(4)  -- Location number based on bridge schematic (1,000 sensors)
   , FOREIGN KEY(Bridge_ID)  REFERENCES Bridge_Tbl(Bridge_ID)
   , FOREIGN KEY(Teds_ID)    REFERENCES Teds_Tbl(Teds_ID)
   , PRIMARY KEY(Sensor_ID)
@@ -38,7 +38,7 @@ CREATE TABLE Sensor_Data
   , FOREIGN KEY(Sensor_ID)  REFERENCES Sensor_Tbl(Sensor_ID)
   );
 
--- Maintain insert routines to Bridge
+-- Maintain insert routines for data
 -- Applys a timestamp to keep track of data entry
 CREATE OR REPLACE PROCEDURE Insert_Data
   ( Sensor_ID IN Sensor_Data.Sensor_ID%TYPE
@@ -81,8 +81,8 @@ BEGIN
       -- Grab the Current NumEntry
       SELECT NumEntry
         INTO NumInc
-        FROM DATA_UPDATE
-        WHERE SENSOR_ID = 0;
+        FROM Data_Update
+        WHERE Sensor_ID = P_Sensor_ID;
       -- Update the number entry and post date entry
       UPDATE Data_Update
       SET    DataEntry = P_DateEnrty,

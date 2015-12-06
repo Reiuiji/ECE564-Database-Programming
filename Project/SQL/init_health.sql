@@ -1,12 +1,13 @@
 --
--- Teds Init Script
--- V 0.4
+-- Health Init Script
+-- V 0.5
 --
 
 -- Health Report Table
 -- Reports the health of the bridge
 CREATE TABLE Health_Report
   ( Bridge_ID               NUMBER(8) NOT NULL
+  , Sensor_ID               NUMBER(10) NOT NULL
   , DateEntry               TIMESTAMP(0)
   , Status                  NUMBER(2) -- 0 GREEN/GOOD, 1 YELLOW/WARNING, 2 RED/FAILURE
   , Report                  VARCHAR(30)
@@ -69,19 +70,19 @@ BEGIN
     -- Equal Threshold
     IF THRES.CheckCode = 0 THEN
       IF P_Val = THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- High Threshold
     ELSIF THRES.CheckCode = 1 THEN
       IF P_Val > THRES.Threshold_Value  THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- Low Threshold
     ELSIF THRES.CheckCode = 2 THEN
       IF P_Val < THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- No Check
