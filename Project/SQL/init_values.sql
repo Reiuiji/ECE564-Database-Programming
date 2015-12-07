@@ -5,7 +5,7 @@ DECLARE
 BEGIN
   -- insert_bridge(Name, Year_Build, Country, State, City, Lat, Lot);
   Results := insert_bridge('Sagamore Bridge','1935-06-22','USA','MA','Bourne','41.77628','-70.54326');
-  Results := insert_bridge('Sagamore Bridge','1935-06-22','USA','MA','Bourne','41.77628','-70.54326');
+  Results := insert_bridge('Bourne Bridge', '1935-06-22', 'USA','MA','Bourne','41.74781','-70.58963');
   Results := insert_bridge('Cape Cod Canal Railroad Bridge', '1935-06-22', 'USA','MA','Bourne','41.74202','-70.61363');
 END;
 /
@@ -95,6 +95,9 @@ INSERT INTO Sensor_Tbl VALUES (0,0,1,1);
 INSERT INTO Sensor_Tbl VALUES (0,0,1,2);
 INSERT INTO Sensor_Tbl VALUES (0,0,1,3);
 INSERT INTO Sensor_Tbl VALUES (0,0,2,4);
+INSERT INTO Sensor_Tbl VALUES (0,1,1,2);
+INSERT INTO Sensor_Tbl VALUES (0,1,1,3);
+INSERT INTO Sensor_Tbl VALUES (0,2,2,4);
 
 -- Insert Health Monitory Thresholds
 -- INSERT INTO Sensor_Thresholds VALUES (T_ID, CheckCode, Threshold_Value, Report_Code, Report_Results);
@@ -126,4 +129,19 @@ BEGIN
 END;
 /
 
+-- Insert Default Security Values
+-- Setup Default User Name and Pass
+-- user: root
+-- pass: toor
+-- * Update when you login
 
+INSERT INTO User_Tbl VALUES ( 'root','root@localhost', '$2y$12$Y9jGaHcdxFkpZgHzYoSiBe1qW3vL4GXydwH65h0RaAWVTQCbgt27u');
+
+-- Create a template Token
+DECLARE
+BEGIN
+  INSERT_TOKEN(0,'6bb047e07c43503d0769f21152fd0090');
+  INSERT_TOKEN(0,'a572fd2cc684f05da7a982322cbce2c6');
+  INSERT_TOKEN(1,'2bb87705ce1013ab26654c9fe48b67c0');
+END;
+/

@@ -8,6 +8,7 @@ PROMPT ==========================================
 -- Going Through init in reverse
 
 -- Security
+DROP PROCEDURE  INSERT_TOKEN;
 DROP TABLE      ACCESS_TOKEN;
 DROP TABLE      FAILED_LOGIN;
 DROP TABLE      USER_TBL;
@@ -20,6 +21,7 @@ DROP TABLE      Sensor_Thresholds;
 DROP TABLE      Health_Report;
 
 -- Sensor
+DROP VIEW       SENSOR;
 DROP PROCEDURE  Update_Data;
 DROP TABLE      Data_Update;
 DROP PROCEDURE  Insert_Data;

@@ -94,6 +94,7 @@ END;
 --View of the bridge data
 CREATE OR REPLACE VIEW Sensor AS  
 SELECT ST.Sensor_ID       AS SENSOR_ID
+     , ST.Bridge_ID       AS Bridge_ID
      , ST.Teds_ID         AS TEDS_ID
      , ST.Location_Number AS LOCATION_NUM
      , TT.Manufacture_ID  AS MANUFACTURE_ID

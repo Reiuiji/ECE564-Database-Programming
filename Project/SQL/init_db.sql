@@ -20,4 +20,5 @@ PROMPT Populating with Default Data
 @init_values.sql
 PROMPT Populating Complete
 
-
+-- Commit the work
+COMMIT WORK;

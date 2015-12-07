@@ -19,14 +19,26 @@ CREATE TABLE Failed_Login
 
 -- Sensor Access Token Tables
 CREATE TABLE ACCESS_TOKEN
-  ( Sensor_ID                 NUMBER(10) NOT NULL
+  ( Sensor_ID                 NUMBER(10) NOT NULL UNIQUE
   , Key                       VARCHAR(60)
   , FOREIGN KEY(Sensor_ID)    REFERENCES Sensor_Tbl(Sensor_ID)
   );
-
--- Setup Default User Name and Pass
--- user: root
--- pass: toor
--- * Update when you login
-
-INSERT INTO User_Tbl VALUES ( 'root','root@localhost', '$2y$12$Y9jGaHcdxFkpZgHzYoSiBe1qW3vL4GXydwH65h0RaAWVTQCbgt27u');
+  
+  
+-- Insert Auth Token
+-- Handles the update of the Sensors Token
+CREATE OR REPLACE PROCEDURE INSERT_TOKEN
+  ( P_Sensor_ID IN ACCESS_TOKEN.Sensor_ID%TYPE
+  , P_Key         IN ACCESS_TOKEN.Key%TYPE
+  )
+  AS
+BEGIN
+  INSERT INTO ACCESS_TOKEN (Sensor_ID, Key) VALUES (P_Sensor_ID, P_Key);
+  EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+      -- Update to the new token
+      UPDATE ACCESS_TOKEN
+      SET    Key = P_Key
+      WHERE Sensor_ID = P_Sensor_ID;
+END;
+/

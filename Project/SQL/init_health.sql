@@ -8,6 +8,8 @@ CREATE TABLE Health_Report
   ( Bridge_ID               NUMBER(8) NOT NULL
   , Sensor_ID               NUMBER(10) NOT NULL
   , DateEntry               TIMESTAMP(0)
+  , Value                   NUMBER(5)
+  , Threshold_Value         NUMBER(5)
   , Status                  NUMBER(2) -- 0 GREEN/GOOD, 1 YELLOW/WARNING, 2 RED/FAILURE
   , Report                  VARCHAR(30)
   , FOREIGN KEY (Bridge_ID) REFERENCES Bridge_Tbl(Bridge_ID)
@@ -69,19 +71,19 @@ BEGIN
     -- Equal Threshold
     IF THRES.CheckCode = 0 THEN
       IF P_Val = THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, P_Val, Thres.Threshold_Value, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- High Threshold
     ELSIF THRES.CheckCode = 1 THEN
       IF P_Val > THRES.Threshold_Value  THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, P_Val, Thres.Threshold_Value, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- Low Threshold
     ELSIF THRES.CheckCode = 2 THEN
       IF P_Val < THRES.Threshold_Value THEN
-        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, THRES.Report_Code, THRES.Report_Results);
+        INSERT INTO HEALTH_REPORT VALUES (P_Bridge_ID, P_Sensor_ID, SYSDATE, P_Val, Thres.Threshold_Value, THRES.Report_Code, THRES.Report_Results);
       END IF;
     
     -- No Check
