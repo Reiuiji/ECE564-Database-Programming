@@ -4,7 +4,7 @@
  * Will provide a new token for any sensor id
  * ADMIN ONLY
  *
- * Generate Token Util
+ * Generate Token Utility
  * gentoken.php?sid=0
  */
 

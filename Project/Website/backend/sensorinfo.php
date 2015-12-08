@@ -1,6 +1,6 @@
 <?php
 /**
- * Sensor Info Script will provide the variaous information of the sensors
+ * Sensor Info Script will provide the various information of the sensors
  * in the database or connected to a specific bridge
  *
  * function examples

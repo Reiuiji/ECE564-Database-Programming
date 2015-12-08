@@ -1,4 +1,4 @@
--- Database initalizer Script
+-- Database initializer Script
 
 PROMPT ==========================================
 PROMPT |           Running Initalizer           |

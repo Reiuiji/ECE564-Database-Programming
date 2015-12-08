@@ -1,7 +1,7 @@
 <?php
 /**
  * Bridge script which will output the sensors on a specific bridge
- * output in a json format
+ * output in a JSON format
  *
  * function examples
  * bridgesensors.php

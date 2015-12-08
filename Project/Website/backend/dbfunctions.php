@@ -13,7 +13,7 @@ function OrclConnect() {
             $e = oci_error();
             trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
         } else{
-            echo("\n<!--Debug: Connection Enstablished!-->\n");
+            echo("\n<!--Debug: Connection Established!-->\n");
         }
     }
     return $conn;

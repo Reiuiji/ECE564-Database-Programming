@@ -12,7 +12,7 @@ END;
 
 -- Inserting Arbitrary TEDS Data
 -- INSERT INTO Teds_Tbl VALUES (0,TEDS_ID, M_ID, Model_NUM, VerNum, Serial, T_ID, StdTmp, TC_ID, CTmp, User_Text);
-INSERT INTO Teds_Tbl VALUES (0,17,1,'a',1,12341234,25,'FFFFF',0, '0','Acceleretor Test');
+INSERT INTO Teds_Tbl VALUES (0,17,1,'a',1,12341234,25,'FFFFF',0, '0','Accelerator Test');
 INSERT INTO Teds_Tbl VALUES (0,42,3,'b',3,86753090,33,'A0A0A',0, '0','Bridge S Test');
 INSERT INTO Teds_Tbl VALUES (0,88,2,'a',5,13371337,35,'E8F8A',0, '0','Strain Test');
 INSERT INTO Teds_Tbl VALUES (0,99,6,'c',2,80808080,37,'FACE0',0, '0','Res Temp Test');
@@ -105,7 +105,7 @@ INSERT INTO Sensor_Thresholds VALUES (0,0,115,0,'Equal Activate G');
 INSERT INTO Sensor_Thresholds VALUES (0,1,90,1,'Max Activate Y');
 INSERT INTO Sensor_Thresholds VALUES (0,2,100,2,'Min Activate R');
 
--- Insert arbitraty Sensor Data
+-- Insert arbitrary Sensor Data
 DECLARE
 BEGIN
   -- Insert_Data(S_ID, Val);

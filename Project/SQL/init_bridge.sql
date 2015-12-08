@@ -6,9 +6,9 @@
 CREATE OR REPLACE TYPE Location_Typ
 AS OBJECT 
   ( Country  VARCHAR(60) -- Country ex USA
-  , State    VARCHAR(2)  -- State Abriveations ex MA
+  , State    VARCHAR(2)  -- State Abbreviations ex MA
   , City     VARCHAR(60) -- City/Town
-  , Lat      NUMBER(8,5) -- Latitute xxx.yyyyy
+  , Lat      NUMBER(8,5) -- Latitude xxx.yyyyy
   , Lot      NUMBER(8,5) -- Longitude xxx.yyyyy
   );
 /

@@ -56,7 +56,7 @@ END Insert_Data;
 --    track how much data in the sensors db
 CREATE TABLE Data_Update
   ( Sensor_ID               NUMBER(20) NOT NULL UNIQUE
-  , DataEntry               TIMESTAMP(0)        -- TimeStamp of data entered
+  , DataEntry               TIMESTAMP(0)        -- Time Stamp of data entered
   , Val                     NUMBER(5)           -- Sensor_TBL Val
   , NumEntry                NUMBER(5) DEFAULT 1 -- How many recordings on the sensor_data
   , FOREIGN KEY(Sensor_ID)  REFERENCES Sensor_Tbl(Sensor_ID)

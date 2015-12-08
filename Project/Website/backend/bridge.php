@@ -1,7 +1,7 @@
 <?php
 /**
  * Bridge script which will output the current bridges in the database
- * output in a json format
+ * output in a JSON format
  *
  * function examples
  * bridge.php

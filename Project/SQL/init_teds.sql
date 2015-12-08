@@ -17,7 +17,7 @@ CREATE TABLE Teds_Tbl
   , Standard_Template     RAW(2000)  -- RAW data from the teds dev
   -- Section 3 Calibration TEDS Template
   , Template_ID_C         NUMBER(2)  -- 40 - 42       :  8 Bits
-  , Calibration_Template  RAW(2000)  -- RAW Calibaration Data
+  , Calibration_Template  RAW(2000)  -- RAW Calibration Data
   -- Section 4 User Data
   , User_Text             VARCHAR(32)-- Custom User Text
   , PRIMARY KEY (TEDS_ID)
@@ -39,14 +39,14 @@ BEGIN
 END;
 /
 
--- IEEE Standard Templates - Trandsucer Types
+-- IEEE Standard Templates - Transducer Types
 CREATE TABLE Transducer_Type 
   ( Transducer_ID  NUMBER(2) NOT NULL
   , Name           VARCHAR(100)
   , PRIMARY KEY(Transducer_ID)
   );
 
--- IEEE Standard Templates - Physical Measureand
+-- IEEE Standard Templates - Physical Measurement
 CREATE TABLE physical_type
   ( physical_id  NUMBER(3) NOT NULL
   , unit         varchar(12)
