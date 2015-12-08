@@ -102,8 +102,8 @@ INSERT INTO Sensor_Tbl VALUES (0,2,2,4);
 -- Insert Health Monitory Thresholds
 -- INSERT INTO Sensor_Thresholds VALUES (T_ID, CheckCode, Threshold_Value, Report_Code, Report_Results);
 INSERT INTO Sensor_Thresholds VALUES (0,0,115,0,'Equal Activate G');
-INSERT INTO Sensor_Thresholds VALUES (0,1,90,1,'Min Activate Y');
-INSERT INTO Sensor_Thresholds VALUES (0,2,100,2,'Max Activate R');
+INSERT INTO Sensor_Thresholds VALUES (0,1,90,1,'Max Activate Y');
+INSERT INTO Sensor_Thresholds VALUES (0,2,100,2,'Min Activate R');
 
 -- Insert arbitraty Sensor Data
 DECLARE
